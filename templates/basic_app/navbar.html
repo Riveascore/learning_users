@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load navbar_content %}
+{% load get_dictionary_item %}
 <h1>{% get_navbar_items as navbar_items %}</h1>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -16,7 +17,9 @@
       
       {% for item in navbar_items %}
         {% comment %} {{ item['text'] }} {% endcomment %}
-        {{ item }}
+        {% comment %} {{ item['text'] }} {% endcomment %}
+        {{ item|get_item:'text' }}
+        {% comment %} {% item['text'] %} {% endcomment %}
         <h1>ham</h1>
         {% comment %} {% include "basic_app/navbar_item.html" with item=item %} {% endcomment %}
       {% endfor %}

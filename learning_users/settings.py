@@ -72,8 +72,6 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = ('basic_app.context_processors.media_url',)
-
 WSGI_APPLICATION = 'learning_users.wsgi.application'
 
 
