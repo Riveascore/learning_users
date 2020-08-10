@@ -17,12 +17,12 @@ logged_in = false
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         {% for item in navbar_links %}
-          {% include "navbar_item.html" with navbar_item=navbar_item %}
+          {% include "basic_app/navbar_item.html" with navbar_item=navbar_item %}
         {% endfor %}
         {% if logged_in %}
-          {% include "navbar_item.html" with navbar_item=register_item %}
+          {% include "basic_app/navbar_item.html" with navbar_item=register_item %}
         {% else %}
-          {% include "navbar_item.html" with navbar_item=login_item %}
+          {% include "basic_app/navbar_item.html" with navbar_item=login_item %}
         {% endif %}
       </ul>
     </div>
