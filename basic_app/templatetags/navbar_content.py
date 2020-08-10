@@ -1,8 +1,8 @@
 from django import template
 register = template.Library()
 
-@register.simple_tag(name="navbar_items")
-def navbar_items(value=5):
+@register.simple_tag(name="get_navbar_items")
+def get_navbar_items(value=5):
   navbar_links = [ 
     { 'text': 'Home', 'url_key': 'index' },
     { 'text': 'Admin', 'url_key': 'admin:index' }

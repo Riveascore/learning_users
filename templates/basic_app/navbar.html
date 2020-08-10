@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% load define_action %}
-<h1>{% navbar_items %}</h1>
+{% load navbar_content %}
+<h1>{% get_navbar_items as navbar_items %}</h1>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,14 +13,13 @@
       {% comment %} {% set real_item = { 'url_key': "ham", text: "bob", } %} {% endcomment %}
       {% comment %} {% include "basic_app/navbar_item.html" with item=dict(url_key='ham', text='bob') %} {% endcomment %}
 
-      {% comment %} {{ media_url }} {% endcomment %}
       
-      {% comment %} <h1>{{ navbar_items }}</h1> {% endcomment %}
-      {% comment %} {% for item in navbar_items %}
+      {% for item in navbar_items %}
+        {% comment %} {{ item['text'] }} {% endcomment %}
         {{ item }}
         <h1>ham</h1>
-        {% include "basic_app/navbar_item.html" with item=item %}
-      {% endfor %} {% endcomment %}
+        {% comment %} {% include "basic_app/navbar_item.html" with item=item %} {% endcomment %}
+      {% endfor %}
       {% comment %} {% if logged_in %}
         {% include "basic_app/navbar_item.html" with item=register_item %}
       {% else %}
