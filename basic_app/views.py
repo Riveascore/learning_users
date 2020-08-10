@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from basic_app.forms import UserForm, UserProfileInfoForm
+# from django.template import Context
+from django.template import RequestContext
 
 # Create your views here.
 def index(request):
-  render(request, 'basic_app/index.html')
+  return render(request, 'basic_app/index.html')
 
 def register(request):
   registered = False

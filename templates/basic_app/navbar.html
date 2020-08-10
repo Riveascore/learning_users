@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-{% with navbar_links = [ 
-  { 'text': 'Home', 'url_key': 'index' },
-  { 'text': 'Admin', 'url_key': 'admin:index' }
-] 
-register_item = { 'text': 'Register', 'url_key': 'basic_app:register' }
-login_item = { 'text': 'Login', 'url_key': 'basic_app:login' }
-logged_in = false
-%}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% comment %} {% set real_item=dict(url_key='ham', text='bob') %} {% endcomment %}
+      {% comment %} {% set real_item = { 'url_key': "ham", text: "bob", } %} {% endcomment %}
+      {% comment %} {% include "basic_app/navbar_item.html" with item=dict(url_key='ham', text='bob') %} {% endcomment %}
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {% for item in navbar_links %}
-          {% include "basic_app/navbar_item.html" with navbar_item=navbar_item %}
-        {% endfor %}
-        {% if logged_in %}
-          {% include "basic_app/navbar_item.html" with navbar_item=register_item %}
-        {% else %}
-          {% include "basic_app/navbar_item.html" with navbar_item=login_item %}
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+      {% comment %} {{ media_url }} {% endcomment %}
+      
+      {% comment %} <h1>{{ navbar_items }}</h1> {% endcomment %}
+      {% comment %} {% for item in navbar_items %}
+        {{ item }}
+        <h1>ham</h1>
+        {% include "basic_app/navbar_item.html" with item=item %}
+      {% endfor %} {% endcomment %}
+      {% comment %} {% if logged_in %}
+        {% include "basic_app/navbar_item.html" with item=register_item %}
+      {% else %}
+        {% include "basic_app/navbar_item.html" with item=login_item %}
+      {% endif %} {% endcomment %}
 
-{% endwith %}
+    </ul>
+  </div>
+</nav>
