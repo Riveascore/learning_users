@@ -10,14 +10,14 @@ def get_navbar_items(value=5):
   
   return navbar_links
 
-@register.simple_tag(name="register_item")
-def register_item():
+@register.simple_tag(name="get_register_item")
+def get_register_item():
   return { 'text': 'Register', 'url_key': 'basic_app:register' }
 
-@register.simple_tag(name="login_item")
-def login_item():
+@register.simple_tag(name="get_login_item")
+def get_login_item():
   return { 'text': 'Login', 'url_key': 'basic_app:login' }
 
-@register.simple_tag(name="logged_in")
-def logged_in():
+@register.simple_tag(name="get_logged_in")
+def get_logged_in():
   return False

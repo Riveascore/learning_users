@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 {% load navbar_content %}
-<h1>{% get_navbar_items as navbar_items %}</h1>
+{% get_navbar_items as navbar_items %}
+{% get_register_item as register_item %}
+{% get_login_item as login_item %}
+{% get_logged_in as logged_in %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +21,11 @@
       {% for item in navbar_items %}
         {% include "basic_app/navbar_item.html" with item=item %}
       {% endfor %}
-      {% comment %} {% if logged_in %}
+      {% if logged_in %}
         {% include "basic_app/navbar_item.html" with item=register_item %}
       {% else %}
         {% include "basic_app/navbar_item.html" with item=login_item %}
-      {% endif %} {% endcomment %}
+      {% endif %}
 
     </ul>
   </div>
