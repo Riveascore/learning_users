@@ -8,16 +8,16 @@ def navbar_items(value=5):
     { 'text': 'Admin', 'url_key': 'admin:index' }
   ] 
   
-  return "navbar_links"
+  return navbar_links
 
-# @register.simple_tag(name="register_item")
-# def register_item():
-#   return { 'text': 'Register', 'url_key': 'basic_app:register' }
+@register.simple_tag(name="register_item")
+def register_item():
+  return { 'text': 'Register', 'url_key': 'basic_app:register' }
 
-# @register.simple_tag(name="login_item")
-# def login_item():
-#   return { 'text': 'Login', 'url_key': 'basic_app:login' }
+@register.simple_tag(name="login_item")
+def login_item():
+  return { 'text': 'Login', 'url_key': 'basic_app:login' }
 
-# @register.simple_tag(name="logged_in")
-# def logged_in():
-#   return False
+@register.simple_tag(name="logged_in")
+def logged_in():
+  return False
