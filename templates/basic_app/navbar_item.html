@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-{% load get_dictionary_item %}
 <li class="nav-item">
-  <a class="nav-link" href="{{ item|get_item:'url_key' }}">
-    {{ item|get_item:'text' }}
+  <a href="{% url item.url_key %}" class="nav-link">
+    {{ item.text }}
   </a>
 </li>

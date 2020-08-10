@@ -13,19 +13,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      {% comment %} {% set real_item=dict(url_key='ham', text='bob') %} {% endcomment %}
-      {% comment %} {% set real_item = { 'url_key': "ham", text: "bob", } %} {% endcomment %}
-      {% comment %} {% include "basic_app/navbar_item.html" with item=dict(url_key='ham', text='bob') %} {% endcomment %}
-
-      
       {% for item in navbar_items %}
         {% include "basic_app/navbar_item.html" with item=item %}
       {% endfor %}
+      {% comment %} 
       {% if logged_in %}
-        {% include "basic_app/navbar_item.html" with item=register_item %}
-      {% else %}
         {% include "basic_app/navbar_item.html" with item=login_item %}
+      {% else %}
       {% endif %}
+      {% endcomment %}
+      {% include "basic_app/navbar_item.html" with item=register_item %}
 
     </ul>
   </div>
