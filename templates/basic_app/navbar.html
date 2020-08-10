@@ -1,27 +1,30 @@
-{% with navbar_links as [ 
+{% with navbar_links = [ 
   { 'text': 'Home', 'url_key': 'index' },
-  { 'text': 'Admin', 'url_key': 'admin:index' },
-  { 'text': 'Register', 'url_key': 'basic_app:register' },
+  { 'text': 'Admin', 'url_key': 'admin:index' }
 ] 
+register_item = { 'text': 'Register', 'url_key': 'basic_app:register' }
+login_item = { 'text': 'Login', 'url_key': 'basic_app:login' }
+logged_in = false
 %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {% for item in navbar_links %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url item['url'] %}">
-            {{ item['text'] }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% for item in navbar_links %}
+          {% include "navbar_item.html" with navbar_item=navbar_item %}
+        {% endfor %}
+        {% if logged_in %}
+          {% include "navbar_item.html" with navbar_item=register_item %}
+        {% else %}
+          {% include "navbar_item.html" with navbar_item=login_item %}
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
 
 {% endwith %}
